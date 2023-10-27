@@ -1,0 +1,13 @@
+root ::= (
+    "{" ws
+    "\"response\":" ws
+    string ws
+    "}"
+)
+
+# string ::= "\"" [^"]+ "\""
+string ::= "\"" (
+    [^"\\] |
+    "\\" (["\\/bfnrt] | "u" [0-9a-fA-F] [0-9a-fA-F] [0-9a-fA-F] [0-9a-fA-F]) # escapes
+)* "\""
+ws ::= " "*
